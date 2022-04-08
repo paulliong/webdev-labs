@@ -25,8 +25,6 @@ quotes = (
     '“If You Are Working On Something That You Really Care About, You Don’t Have To Be Pushed. The Vision Pulls You.” – Steve Jobs',
 )
 
-quote = random.choice(quotes) 
-
 ##############
 # Exercise 1 #
 ##############
@@ -40,6 +38,7 @@ def exercise1():
 ##############
 @app.route('/quote')
 def exercise2():
+    quote = random.choice(quotes)
     return render_template(
         'quote-of-the-day.html',
         user=current_user,
