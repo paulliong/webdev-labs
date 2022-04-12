@@ -48,8 +48,7 @@ FROM posts
 INNER JOIN users 
 ON posts.user_id = users.id 
 WHERE posts.user_id = 26 
-OR posts.user_id = 12 
-ORDER BY posts.id asc;
+OR posts.user_id = 12; 
 
 
 -- Exercise 9
@@ -60,7 +59,13 @@ WHERE following.user_id = 26;
 
 
 -- Exercise 10
-
+SELECT posts.id, posts.pub_date, following.following_id, users.username FROM posts
+INNER JOIN users 
+ON posts.user_id = users.id
+INNER JOIN following 
+ON posts.user_id = following.following_id
+WHERE following.user_id = 26
+ORDER BY posts.pub_date desc;
 
 
 
@@ -71,9 +76,9 @@ INSERT INTO bookmarks (user_id, post_id, timestamp) VALUES (26, 221, now());
 
 
 -- Exercise 12
-DELETE FROM bookmarks WHERE post_id = 219;
-DELETE FROM bookmarks WHERE post_id = 220;
-DELETE FROM bookmarks WHERE post_id = 221;
+DELETE FROM bookmarks WHERE user_id = 26 AND post_id = 219;
+DELETE FROM bookmarks WHERE user_id = 26 AND post_id = 220;
+DELETE FROM bookmarks WHERE user_id = 26 AND post_id = 221;
 
 
 -- Exercise 13
